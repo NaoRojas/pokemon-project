@@ -3,6 +3,8 @@ import { PokemonType } from '@/types/Pokemon'
 import { Button } from '../ui/button'
 import Link from 'next/link'
 
+import '@/styles/globals.css'
+
 export default async function PokemonTypeList() {
   const typeList: PokemonType = await getPokemonType()
 

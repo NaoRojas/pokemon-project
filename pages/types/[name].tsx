@@ -1,8 +1,9 @@
 import { getPokemonListByType } from '@/api/pokeApi'
-import { Pokemon, PokemonList, PokemonListItem } from '@/types/Pokemon'
+import { PokemonListItem } from '@/types/Pokemon'
 
 interface Props {
   pokemonList: PokemonListItem[]
+  type: string
 }
 
 export async function getServerSideProps({ params }) {
@@ -11,14 +12,16 @@ export async function getServerSideProps({ params }) {
   return {
     props: {
       pokemonList,
+      type: name,
     },
   }
 }
 
-export default function PokemonListByType({ pokemonList }: Props) {
+export default function PokemonListByType({ pokemonList, type }: Props) {
   return (
     <>
-      <div>
+      <div className="container">
+        <h1 className="text-4xl">Pokemons Type {type}</h1>
         <ul>
           {pokemonList.map((poke) => (
             <li key={poke.pokemon.name}>{poke.pokemon.name}</li>
