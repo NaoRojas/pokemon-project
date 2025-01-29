@@ -1,7 +1,7 @@
 import { usePokemon } from '@/hooks/usePokemon'
 
-import { Skeleton } from '../ui/skeleton'
-import { Progress } from '../ui/progress'
+import { Skeleton } from '../../ui/skeleton'
+import { Progress } from '../../ui/progress'
 import Image from 'next/image'
 import { toCapitalize } from '@/lib/toCapitalize'
 import { colorType } from '@/constants/colorType'

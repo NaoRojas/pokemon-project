@@ -1,6 +1,6 @@
 'use client'
 
-import PokemonDialog from '@/components/pokemon/pokemon-dialog'
+import PokemonDialog from '@/components/pokemon/dialog/pokemon-dialog'
 import PokemonModal from '@/components/pokemon/pokemon-modal'
 import { Pokemon } from '@/types/Pokemon'
 import { ColumnDef } from '@tanstack/react-table'
