@@ -1,10 +1,4 @@
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogTitle,
-  DialogHeader,
-} from '@/components/ui/dialog'
+import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog'
 import { DialogTrigger } from '@radix-ui/react-dialog'
 import { Button } from '../ui/button'
 import PokemonDialogContent from './pokemon-dialog-content'
@@ -17,7 +11,7 @@ export default function PokemonDialog({ name }) {
         </Button>
       </DialogTrigger>
       <DialogContent>
-        <DialogTitle>x</DialogTitle>
+        <DialogTitle>{name}</DialogTitle>
         <PokemonDialogContent name={name}></PokemonDialogContent>
       </DialogContent>
     </Dialog>

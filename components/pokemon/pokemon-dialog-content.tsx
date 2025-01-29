@@ -5,6 +5,7 @@ import { Progress } from '../ui/progress'
 import Image from 'next/image'
 import { toCapitalize } from '@/lib/toCapitalize'
 import { colorType } from '@/constants/colorType'
+import { toTitleCase } from '@/lib/toTitleCase'
 
 export default function PokemonDialogContent({ name }) {
   const { pokemon, isLoading } = usePokemon(name)
@@ -13,51 +14,57 @@ export default function PokemonDialogContent({ name }) {
     <>
       {!isLoading && !!pokemon ? (
         <>
-          <Image
-            src={pokemon.sprites.front_default}
-            width={250}
-            height={250}
-            alt={pokemon.name}
-          />
-
-          <h1 className="text-4xl text-bold space-y-2">{pokemon.name}</h1>
-
-          {/* {pokemon.types.map((type) => (
-            <span
-              key={`${pokemon.name}-${type.type.name}`}
-              className="text-xs font-semibold px-2 py-1  rounded-full text-white"
-            >
-              {toCapitalize(type.type.name)}
-            </span>
-          ))} */}
-
-          <h3>Weight: {pokemon.weight}</h3>
-          {/* <div className="flex-col">
-            {pokemon.stats.map((statObject: any) => {
-              const statName = statObject.stat.name
-              const statValue = statObject.base_stat
-
-              return (
-                <div
-                  className="flex items-stretch"
-                  style={{ width: '500px' }}
-                  key={statName}
-                >
-                  <h3 className="p-3 w-2/4">
-                    {statName}: {statValue}
-                  </h3>
-                  <Progress className="w-2/4 m-auto" value={statValue} />
-                </div>
-              )
-            })}
-          </div> */}
+          <div className="grid grid-cols-2">
+            <div className="flex justify-center items-center bg-slate-200 p-4 rounded-lg">
+              <Image
+                src={pokemon.sprites.front_default}
+                width={120}
+                height={120}
+                alt={pokemon.name}
+              />
+            </div>
+            <div className="pl-4 flex flex-col justify-between space-y-2">
+              <h4 className="text-lg font-semibold">Types</h4>
+              <div className="flex items-start space-x-2">
+                {pokemon.types.map((type) => (
+                  <span
+                    key={`${pokemon.name}-${type.type.name}`}
+                    className="text-xs font-semibold px-4 py-1  rounded-full text-white w-fit"
+                    style={{ backgroundColor: colorType[type.type.name] }}
+                  >
+                    {toCapitalize(type.type.name)}
+                  </span>
+                ))}
+              </div>
+              <h4 className="text-lg font-semibold mt-3">Stats</h4>
+              {pokemon.stats.map((statObject: any) => {
+                const statName = statObject.stat.name
+                const statValue = statObject.base_stat
+                return (
+                  <div
+                    className="flex flex-col justify-start items-start bg-slate-100 rounded-lg p-2"
+                    key={statName}
+                  >
+                    <span className="text-sm text-slate-900">
+                      {toTitleCase(statName)}: {statValue}
+                    </span>
+                    <Progress value={statValue} />
+                  </div>
+                )
+              })}
+            </div>
+          </div>
         </>
       ) : (
-        <div className="flex items-center">
-          <Skeleton className="w-24 h-24 rounded-full" />
-          <div className="space-y-2 ml-2">
-            <Skeleton className="h-4 w-[100px]" />
-            <Skeleton className="h-4 w-[100px]" />
+        <div className="grid grid-cols-2 space-x-2">
+          <Skeleton className="h-[420px] w-[200px] p-4" />
+          <div className="flex flex-col justify-between space-y-2">
+            <Skeleton className="h-10 w-[200px]" />
+            <Skeleton className="h-10 w-[200px]" />
+            <Skeleton className="h-10 w-[200px]" />
+            <Skeleton className="h-10 w-[200px]" />
+            <Skeleton className="h-10 w-[200px]" />
+            <Skeleton className="h-10 w-[200px]" />
           </div>
         </div>
       )}
