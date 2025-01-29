@@ -26,13 +26,16 @@ export const columns: ColumnDef<Pokemon>[] = [
     accessorKey: 'name',
     header: 'Name',
     cell: (row) => {
+      const name = row.getValue('name')
       return (
         <HoverCard>
           <HoverCardTrigger asChild>
-            <Link href="">{row.getValue('name')}</Link>
+            <Button variant="link" className="font-bold">
+              {name}
+            </Button>
           </HoverCardTrigger>
-          <HoverCardContent className="w-80">
-            <PokemonModal></PokemonModal>
+          <HoverCardContent className="w-32">
+            <PokemonModal name={name}></PokemonModal>
           </HoverCardContent>
         </HoverCard>
       )
