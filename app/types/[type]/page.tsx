@@ -1,8 +1,11 @@
 import { getPokemonListByType } from '@/api/pokeApi'
-import { Pokemon, PokemonListItem } from '@/types/Pokemon'
-import '@/styles/globals.css'
+import { Pokemon } from '@/types/Pokemon'
 import { DataTable } from './data-table'
 import { columns } from './columns'
+import { colorType } from '@/constants/colorType'
+import { toCapitalize } from '@/lib/toCapitalize'
+import { Button } from '@/components/ui/button'
+import Link from 'next/link'
 
 interface Props {
   params: {
@@ -19,10 +22,18 @@ export default async function PokemonListByType({ params }: Props) {
 
   return (
     <div className="container">
-      <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 md:mb-8 bg-gradient-to-b from-foreground to-foreground/70 bg-clip-text text-transparent leading-[1.2] pb-1">
-        Pokemons of Type {type}
-      </h1>
-      <DataTable columns={columns} data={pokemonList} />
+      <Button asChild variant={'link'} className="font-bold">
+        <Link href="/">Back To Types</Link>
+      </Button>
+      <div className="flex flex-col items-center">
+        <div className="w-1/2">
+          <h3 className="text-3xl font-semibold tracking-tight mb-4">
+            Pokemons of Type{' '}
+            <span style={{ color: colorType[type] }}>{toCapitalize(type)}</span>
+          </h3>
+          <DataTable columns={columns} data={pokemonList} />
+        </div>
+      </div>
     </div>
   )
 }
