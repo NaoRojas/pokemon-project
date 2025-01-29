@@ -20,8 +20,13 @@ export async function getPokemonType() {
 
 export async function getPokemonListByType(type: string) {
     const response = await fetch(POKEMON_API + "type/" + type);
-    const data = await response.json();
+    const data = await response.json().then((res) => {
+        return res.pokemon.map(({ pokemon }) => ({
+            name: pokemon.name,
+            url: pokemon.url
+        }))
+    });
     console.log(data);
-    console.log(data.pokemon);
-    return data.pokemon;
+
+    return data;
 }
