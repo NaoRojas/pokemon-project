@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react'
 
 export default function PokemonModal({ name }) {
   const [pokemon, setPokemon] = useState<Pokemon | null>(null)
-  console.log(pokemon)
   useEffect(() => {
     getPokemon(name).then((data) => {
       setPokemon(data)
