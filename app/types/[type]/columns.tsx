@@ -2,13 +2,6 @@
 
 import PokemonDialog from '@/components/pokemon/pokemon-dialog'
 import PokemonModal from '@/components/pokemon/pokemon-modal'
-import { Button } from '@/components/ui/button'
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from '@/components/ui/hover-card'
-import { toCapitalize } from '@/lib/toCapitalize'
 import { Pokemon } from '@/types/Pokemon'
 import { ColumnDef } from '@tanstack/react-table'
 

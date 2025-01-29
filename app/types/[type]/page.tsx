@@ -6,7 +6,6 @@ import { colorType } from '@/constants/colorType'
 import { toCapitalize } from '@/lib/toCapitalize'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
-import { Arrow } from '@radix-ui/react-hover-card'
 import { ArrowLeft } from 'lucide-react'
 
 interface Props {

@@ -7,7 +7,13 @@ import { toCapitalize } from '@/lib/toCapitalize'
 import { colorType } from '@/constants/colorType'
 import { toTitleCase } from '@/lib/toTitleCase'
 
-export default function PokemonDialogContent({ name }) {
+interface PokemonDialogContentProps {
+  name: string
+}
+
+export default function PokemonDialogContent({
+  name,
+}: PokemonDialogContentProps) {
   const { pokemon, isLoading } = usePokemon(name)
 
   return (
