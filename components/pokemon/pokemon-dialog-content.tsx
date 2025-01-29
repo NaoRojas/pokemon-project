@@ -24,6 +24,7 @@ export default function PokemonDialogContent({
           <div className="grid grid-cols-2">
             <div className="flex justify-center items-center bg-slate-200 lg:p-4 rounded-lg">
               <Image
+                priority
                 src={pokemon.sprites.front_default}
                 width={120}
                 height={120}
