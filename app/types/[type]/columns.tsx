@@ -1,5 +1,6 @@
 'use client'
 
+import PokemonDialog from '@/components/pokemon/pokemon-dialog'
 import PokemonModal from '@/components/pokemon/pokemon-modal'
 import { Button } from '@/components/ui/button'
 import {
@@ -26,22 +27,19 @@ export const columns: ColumnDef<Pokemon>[] = [
     header: 'Name',
     cell: (row) => {
       const name = row.getValue('name')
-      return (
-        <HoverCard>
-          <HoverCardTrigger asChild>
-            <Button variant="link" className="font-bold">
-              {toCapitalize(name)}
-            </Button>
-          </HoverCardTrigger>
-          <HoverCardContent className="p-4">
-            <PokemonModal name={name}></PokemonModal>
-          </HoverCardContent>
-        </HoverCard>
-      )
+      return <PokemonModal name={name}></PokemonModal>
     },
   },
   {
     accessorKey: 'url',
     header: 'Url',
+  },
+  {
+    header: 'Actions',
+    accessorKey: 'detailName',
+    cell: (row) => {
+      const detailName = row.getValue('detailName')
+      return <PokemonDialog name={detailName}></PokemonDialog>
+    },
   },
 ]
