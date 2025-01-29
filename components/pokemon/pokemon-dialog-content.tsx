@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { toCapitalize } from '@/lib/toCapitalize'
 import { colorType } from '@/constants/colorType'
 import { toTitleCase } from '@/lib/toTitleCase'
+import { Stat } from '@/types/Pokemon'
 
 interface PokemonDialogContentProps {
   name: string
@@ -43,7 +44,7 @@ export default function PokemonDialogContent({
                 ))}
               </div>
               <h4 className="text-lg font-semibold mt-3">Stats</h4>
-              {pokemon.stats.map((statObject: any) => {
+              {pokemon.stats.map((statObject: Stat) => {
                 const statName = statObject.stat.name
                 const statValue = statObject.base_stat
                 return (
