@@ -6,6 +6,8 @@ import { colorType } from '@/constants/colorType'
 import { toCapitalize } from '@/lib/toCapitalize'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
+import { Arrow } from '@radix-ui/react-hover-card'
+import { ArrowLeft } from 'lucide-react'
 
 interface Props {
   params: {
@@ -21,16 +23,23 @@ export default async function PokemonListByType({ params }: Props) {
   console.log(pokemonList)
 
   return (
-    <div className="container">
-      <Button asChild variant={'link'} className="font-bold">
-        <Link href="/">Back To Types</Link>
+    <div className="lg:mt-8 mt-6">
+      <Button asChild variant={'link'} className="font-bold p-0">
+        <Link href="/">
+          <ArrowLeft />
+          Back To Types
+        </Link>
       </Button>
+
       <div className="flex flex-col items-center">
-        <div className="w-1/2">
-          <h3 className="text-3xl font-semibold tracking-tight mb-4">
+        <div className="flec flex-col lg:w-1/2 w-full space-y-3">
+          <h3 className="text-3xl font-semibold tracking-tight">
             Pokemons of Type{' '}
             <span style={{ color: colorType[type] }}>{toCapitalize(type)}</span>
           </h3>
+          <span className="text-sm text-gray-500 mb-4">
+            Hover over the name to see the image
+          </span>
           <DataTable columns={columns} data={pokemonList} />
         </div>
       </div>

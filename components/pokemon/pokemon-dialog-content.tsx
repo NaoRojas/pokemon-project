@@ -15,7 +15,7 @@ export default function PokemonDialogContent({ name }) {
       {!isLoading && !!pokemon ? (
         <>
           <div className="grid grid-cols-2">
-            <div className="flex justify-center items-center bg-slate-200 p-4 rounded-lg">
+            <div className="flex justify-center items-center bg-slate-200 lg:p-4 rounded-lg">
               <Image
                 src={pokemon.sprites.front_default}
                 width={120}
@@ -57,14 +57,14 @@ export default function PokemonDialogContent({ name }) {
         </>
       ) : (
         <div className="grid grid-cols-2 space-x-2">
-          <Skeleton className="h-[420px] w-[200px] p-4" />
+          <Skeleton className="h-[420px] lg:w-[200px] w-[150px] p-4" />
           <div className="flex flex-col justify-between space-y-2">
-            <Skeleton className="h-10 w-[200px]" />
-            <Skeleton className="h-10 w-[200px]" />
-            <Skeleton className="h-10 w-[200px]" />
-            <Skeleton className="h-10 w-[200px]" />
-            <Skeleton className="h-10 w-[200px]" />
-            <Skeleton className="h-10 w-[200px]" />
+            <Skeleton className="h-10 lg:w-[200px] w-[150px]" />
+            <Skeleton className="h-10 lg:w-[200px] w-[150px]" />
+            <Skeleton className="h-10 lg:w-[200px] w-[150px]" />
+            <Skeleton className="h-10 lg:w-[200px] w-[150px]" />
+            <Skeleton className="h-10 lg:w-[200px] w-[150px]" />
+            <Skeleton className="h-10 lg:w-[200px] w-[150px]" />
           </div>
         </div>
       )}

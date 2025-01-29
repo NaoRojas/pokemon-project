@@ -30,7 +30,7 @@ export default function RootLayout({
         <div className="h-full">
           <main>
             <div className="flex flex-col h-[100vh] items-center justify-center bg-zinc-50 dark:bg-zinc-900 text-slate-950 transition-bg fixed inset-0 z-50">
-              <div className="container relative z-10 pointer-events-auto px-6 md:px-8">
+              <div className="container relative z-10 pointer-events-auto px-6 md:px-8 overflow-auto">
                 {children}
               </div>
             </div>
