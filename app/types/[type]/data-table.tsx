@@ -16,6 +16,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
+import { useState, useMemo } from 'react'
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
@@ -26,9 +27,26 @@ export function DataTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
+  const pageSize = 20
+  const [pageIndex, setPageIndex] = useState(0)
+  const totalRows = data.length
+
+  const paginatedData = useMemo(() => {
+    const start = pageIndex * pageSize
+    return data.slice(start, start + pageSize)
+  }, [data, pageIndex, pageSize])
+
   const table = useReactTable({
-    data,
+    data: paginatedData,
     columns,
+    pageCount: Math.ceil(totalRows / pageSize),
+    manualPagination: true,
+    state: {
+      pagination: {
+        pageIndex,
+        pageSize,
+      },
+    },
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
   })
@@ -40,18 +58,16 @@ export function DataTable<TData, TValue>({
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
-                {headerGroup.headers.map((header) => {
-                  return (
-                    <TableHead key={header.id}>
-                      {header.isPlaceholder
-                        ? null
-                        : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
-                    </TableHead>
-                  )
-                })}
+                {headerGroup.headers.map((header) => (
+                  <TableHead key={header.id}>
+                    {header.isPlaceholder
+                      ? null
+                      : flexRender(
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )}
+                  </TableHead>
+                ))}
               </TableRow>
             ))}
           </TableHeader>
@@ -89,16 +105,23 @@ export function DataTable<TData, TValue>({
         <Button
           variant="outline"
           size="sm"
-          onClick={() => table.previousPage()}
-          disabled={!table.getCanPreviousPage()}
+          onClick={() => setPageIndex((prev) => Math.max(prev - 1, 0))}
+          disabled={pageIndex === 0}
         >
           Previous
         </Button>
+        <span className="text-sm">
+          Page {pageIndex + 1} of {Math.ceil(totalRows / pageSize)}
+        </span>
         <Button
           variant="outline"
           size="sm"
-          onClick={() => table.nextPage()}
-          disabled={!table.getCanNextPage()}
+          onClick={() =>
+            setPageIndex((prev) =>
+              Math.min(prev + 1, Math.ceil(totalRows / pageSize) - 1)
+            )
+          }
+          disabled={pageIndex >= Math.ceil(totalRows / pageSize) - 1}
         >
           Next
         </Button>
