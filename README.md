@@ -77,10 +77,10 @@ Tailwind CSS is configured in the `tailwind.config.ts` file. Ensure that the pat
 
 Web Core Vitals are essential metrics for understanding and improving the performance of your web application. Here are the metrics for this project:
 
-- **Largest Contentful Paint (LCP)**: 0.52s
+- **Largest Contentful Paint (LCP)**: 0.16s
 - **Cumulative Layout Shift (CLS)**: 0
-- **Interaction to Next Paint (INP)**: 32ms
-  ![Web Core Vitals](image.png)
+- **Interaction to Next Paint (INP)**: 16ms
+  ![alt text](image-4.png)
 
 These metrics indicate that the project performs exceptionally well, with quick load times and minimal layout shifts.
 
@@ -89,5 +89,5 @@ These metrics indicate that the project performs exceptionally well, with quick 
 - **Initial Page Performance**: 99
   ![Performance Metrics](image-1.png)
 - **Table Page Performance**: 97
-  ![Additional Metrics](image-2.png)
+  ![alt text](image-3.png)
   These scores reflect the high performance of the application, ensuring a smooth and responsive user experience.
