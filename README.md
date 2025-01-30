@@ -1,36 +1,93 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Pokemon Project
+
+This is a Next.js project that displays a list of Pokemon types and allows users to view Pokemon by type.
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+Make sure you have the following installed:
+
+- Node.js
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/your-username/pokemon-project.git
+   cd pokemon-project
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+### Running the Development Server
+
+To start the development server, run:
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Building for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+To build the project for production, run:
 
-## Learn More
+```bash
+npm run build
+# or
+yarn build
+```
 
-To learn more about Next.js, take a look at the following resources:
+### Tailwind CSS Configuration
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Tailwind CSS is configured in the `tailwind.config.ts` file. Ensure that the paths in the `content` array include all the relevant files.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Project Structure
 
-## Deploy on Vercel
+```
+/pages
+  /types
+    [name].tsx
+/components
+  /pokemon
+    pokemon-type-list.tsx
+  /ui
+    button.tsx
+/api
+  pokeApi.ts
+/types
+  Pokemon.ts
+/styles
+  globals.css
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Web Core Vitals
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Web Core Vitals are essential metrics for understanding and improving the performance of your web application. Here are the metrics for this project:
+
+- **Largest Contentful Paint (LCP)**: 0.52s
+- **Cumulative Layout Shift (CLS)**: 0
+- **Interaction to Next Paint (INP)**: 32ms
+  ![Web Core Vitals](image.png)
+
+These metrics indicate that the project performs exceptionally well, with quick load times and minimal layout shifts.
+
+### Performance Metrics
+
+- **Initial Page Performance**: 99
+  ![Performance Metrics](image-1.png)
+- **Table Page Performance**: 97
+  ![Additional Metrics](image-2.png)
+  These scores reflect the high performance of the application, ensuring a smooth and responsive user experience.
