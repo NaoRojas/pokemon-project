@@ -33,7 +33,7 @@ export default async function PokemonListByType({ params }: Props) {
       <div className="flex flex-col items-center">
         <div className="flec flex-col w-full space-y-3">
           <h3 className="text-3xl font-semibold tracking-tight">
-            Pokemons of Type
+            Pokemons of Type&nbsp;
             <span style={{ color: colorType[type as PokemonType] }}>
               {toCapitalize(type)}
             </span>
