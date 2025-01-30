@@ -52,7 +52,7 @@ export function DataTable<TData, TValue>({
   })
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col lg:items-center">
       <Table className="w-full lg:w-1/2 overflow-auto">
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
@@ -93,7 +93,7 @@ export function DataTable<TData, TValue>({
           )}
         </TableBody>
       </Table>
-      <div className="flex items-center justify-end space-x-2 py-4">
+      <div className="flex items-center lg:justify-end justify-start space-x-2 py-4">
         <Button
           variant="outline"
           size="sm"
