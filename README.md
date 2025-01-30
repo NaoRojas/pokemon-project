@@ -2,6 +2,10 @@
 
 This is a Next.js project that displays a list of Pokemon types and allows users to view Pokemon by type.
 
+## Visit the Page
+
+Go to [pokemon-project-rust.vercel.app](https://pokemon-project-rust.vercel.app)
+
 ## Getting Started
 
 ### Prerequisites
