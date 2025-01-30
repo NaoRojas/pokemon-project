@@ -38,7 +38,10 @@ export default function PokemonDialogContent({
                   <span
                     key={`${pokemon.name}-${type.type.name}`}
                     className="text-xs font-semibold px-4 py-1  rounded-full text-white w-fit"
-                    style={{ backgroundColor: colorType[type.type.name] }}
+                    style={{
+                      backgroundColor:
+                        colorType[type.type.name as keyof typeof colorType],
+                    }}
                   >
                     {toCapitalize(type.type.name)}
                   </span>
