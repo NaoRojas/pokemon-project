@@ -23,7 +23,7 @@ export default function PokemonListByType() {
 
   const searchFilter = (pokemonList: Pokemon[]) => {
     return pokemonList.filter((pokemon: Pokemon) =>
-      pokemon.name.toLowerCase().includes(searchText.toLowerCase())
+      pokemon.name?.toLowerCase().includes(searchText.toLowerCase())
     )
   }
   const filteredPokemonList = pokemonList ? searchFilter(pokemonList) : []

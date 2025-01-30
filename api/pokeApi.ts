@@ -1,6 +1,4 @@
 import { toCapitalize } from './../lib/toCapitalize';
-import { PokemonListItem } from '@/types/Pokemon';
-
 const POKEMON_API = "https://pokeapi.co/api/v2/";
 
 export async function getPokemonList() {
@@ -26,14 +24,14 @@ export async function getPokemonType() {
     return data.results;
 }
 
-export async function getPokemonListByType(type: string): Promise<PokemonListItem[]> {
+export async function getPokemonListByType(type: string) {
     const response = await fetch(POKEMON_API + "type/" + type);
-    const data = await response.json();
-    return data.pokemon.map(({ pokemon }: { pokemon: { name: string, url: string } }) => ({
-        pokemon: {
+    const data = await response.json().then((res) => {
+        return res.pokemon.map(({ pokemon }) => ({
             name: pokemon.name,
-            url: pokemon.url,
-            detailName: toCapitalize(pokemon.name)
-        }
-    }));
+            detailName: toCapitalize(pokemon.name),
+            url: pokemon.url
+        }))
+    });
+    return data;
 }
