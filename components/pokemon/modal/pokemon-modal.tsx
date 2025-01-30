@@ -4,8 +4,8 @@ import {
   HoverCardTrigger,
 } from '@/components/ui/hover-card'
 import { toCapitalize } from '@/lib/toCapitalize'
-import { Button } from '../ui/button'
 import PokemonModalContent from './pokemon-modal-content'
+import { Button } from '@/components/ui/button'
 export default function PokemonModal({ name }) {
   return (
     <>

@@ -33,7 +33,5 @@ export async function getPokemonListByType(type: string) {
             url: pokemon.url
         }))
     });
-    console.log(data);
-
     return data;
 }

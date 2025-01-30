@@ -1,12 +1,10 @@
 'use client'
 
 import PokemonDialog from '@/components/pokemon/dialog/pokemon-dialog'
-import PokemonModal from '@/components/pokemon/pokemon-modal'
+import PokemonModal from '@/components/pokemon/modal/pokemon-modal'
 import { Pokemon } from '@/types/Pokemon'
 import { ColumnDef } from '@tanstack/react-table'
 
-// This type is used to define the shape of our data.
-// You can use a Zod schema here if you want.
 export type Payment = {
   id: string
   amount: number

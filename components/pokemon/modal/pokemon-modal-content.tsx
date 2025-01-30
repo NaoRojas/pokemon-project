@@ -1,8 +1,8 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { usePokemon } from '@/hooks/usePokemon'
-import { Skeleton } from '../ui/skeleton'
 import { toCapitalize } from '@/lib/toCapitalize'
 import { colorType } from '@/constants/colorType'
+import { Skeleton } from '@/components/ui/skeleton'
 
 export default function PokemonModalContent({ name }) {
   const { pokemon, isLoading } = usePokemon(name)

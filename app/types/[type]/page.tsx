@@ -17,9 +17,7 @@ interface Props {
 export default async function PokemonListByType({ params }: Props) {
   const { type } = params
 
-  // Fetch data dynamically
   const pokemonList: Pokemon[] = await getPokemonListByType(type)
-  console.log(pokemonList)
 
   return (
     <div className="lg:mt-8 mt-6">
@@ -31,7 +29,7 @@ export default async function PokemonListByType({ params }: Props) {
       </Button>
 
       <div className="flex flex-col items-center">
-        <div className="flec flex-col lg:w-1/2 w-full space-y-3">
+        <div className="flec flex-col w-full space-y-3">
           <h3 className="text-3xl font-semibold tracking-tight">
             Pokemons of Type{' '}
             <span style={{ color: colorType[type] }}>{toCapitalize(type)}</span>
