@@ -14,19 +14,23 @@ import { usePokemonList } from '@/hooks/usePokemonList'
 import { Label } from '@radix-ui/react-label'
 import { Input } from '@/components/ui/input'
 import { SkeletonTable } from '@/components/ui/skeleton-table'
-
+interface Params {
+  [key: string]: string
+}
 export default function PokemonListByType() {
-  const { type } = useParams()
+  const { type } = useParams<Params>()
   const [searchText, setSearchText] = useState('')
 
-  const { pokemonList, isLoading } = usePokemonList(type as string)
+  const { pokemonList, isLoading } = usePokemonList(type)
 
   const searchFilter = (pokemonList: Pokemon[]) => {
     return pokemonList.filter((pokemon: Pokemon) =>
       pokemon.name?.toLowerCase().includes(searchText.toLowerCase())
     )
   }
-  const filteredPokemonList = pokemonList ? searchFilter(pokemonList) : []
+  const filteredPokemonList = pokemonList
+    ? searchFilter(pokemonList as Pokemon[])
+    : []
 
   return (
     <div className="lg:mt-8 mt-6">

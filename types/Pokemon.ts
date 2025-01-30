@@ -1,5 +1,7 @@
 export interface PokemonListItem {
-  pokemon: Pokemon;
+  name: string;
+  detailName: string;
+  url: string;
 }
 export interface Pokemon {
   abilities: Ability[];
