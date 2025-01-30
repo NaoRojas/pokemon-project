@@ -54,29 +54,6 @@ npm run build
 yarn build
 ```
 
-### Tailwind CSS Configuration
-
-Tailwind CSS is configured in the `tailwind.config.ts` file. Ensure that the paths in the `content` array include all the relevant files.
-
-### Project Structure
-
-```
-/pages
-  /types
-    [name].tsx
-/components
-  /pokemon
-    pokemon-type-list.tsx
-  /ui
-    button.tsx
-/api
-  pokeApi.ts
-/types
-  Pokemon.ts
-/styles
-  globals.css
-```
-
 ### Web Core Vitals
 
 Web Core Vitals are essential metrics for understanding and improving the performance of your web application. Here are the metrics for this project:
@@ -91,7 +68,10 @@ These metrics indicate that the project performs exceptionally well, with quick 
 ### Performance Metrics
 
 - **Initial Page Performance**: 99
+
   ![Performance Metrics](image-1.png)
-- **Table Page Performance**: 97
+
+- **Table Page Performance**: 96
+
   ![alt text](image-3.png)
   These scores reflect the high performance of the application, ensuring a smooth and responsive user experience.
