@@ -4,7 +4,13 @@ import { toCapitalize } from '@/lib/toCapitalize'
 import { colorType } from '@/constants/colorType'
 import { Skeleton } from '@/components/ui/skeleton'
 
-export default function PokemonModalContent({ name }) {
+interface PokemonModalContentProps {
+  name: string
+}
+
+export default function PokemonModalContent({
+  name,
+}: PokemonModalContentProps) {
   const { pokemon, isLoading } = usePokemon(name)
 
   return (
@@ -22,7 +28,10 @@ export default function PokemonModalContent({ name }) {
                 <span
                   key={type.type.name}
                   className="text-xs font-semibold px-2 py-1  rounded-full text-white"
-                  style={{ backgroundColor: colorType[type.type.name] }}
+                  style={{
+                    backgroundColor:
+                      colorType[type.type.name as keyof typeof colorType],
+                  }}
                 >
                   {toCapitalize(type.type.name)}
                 </span>

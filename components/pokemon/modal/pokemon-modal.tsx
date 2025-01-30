@@ -6,7 +6,11 @@ import {
 import { toCapitalize } from '@/lib/toCapitalize'
 import PokemonModalContent from './pokemon-modal-content'
 import { Button } from '@/components/ui/button'
-export default function PokemonModal({ name }) {
+interface PokemonModalProps {
+  name: string
+}
+
+export default function PokemonModal({ name }: PokemonModalProps) {
   return (
     <>
       <HoverCard>
