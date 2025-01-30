@@ -1,25 +1,31 @@
-import { getPokemonListByType } from '@/api/pokeApi'
+'use client'
+
+import { useState } from 'react'
+import { useParams } from 'next/navigation'
 import { Pokemon } from '@/types/Pokemon'
 import { DataTable } from './data-table'
 import { columns } from './columns'
 import { colorType } from '@/constants/colorType'
-
-type PokemonType = keyof typeof colorType
 import { toCapitalize } from '@/lib/toCapitalize'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
+import { usePokemonList } from '@/hooks/usePokemonList'
+import { Label } from '@radix-ui/react-label'
+import { Input } from '@/components/ui/input'
+import { SkeletonTable } from '@/components/ui/skeleton-table'
 
-interface Props {
-  params: {
-    type: string
+export default function PokemonListByType() {
+  const { type } = useParams()
+  const [searchText, setSearchText] = useState('')
+
+  const { pokemonList, isLoading } = usePokemonList(type)
+  const searchFilter = (pokemonList: Pokemon[]) => {
+    return pokemonList.filter((pokemon: Pokemon) =>
+      pokemon.name.toLowerCase().includes(searchText.toLowerCase())
+    )
   }
-}
-
-export default async function PokemonListByType({ params }: Props) {
-  const { type } = params
-
-  const pokemonList: Pokemon[] = await getPokemonListByType(type)
+  const filteredPokemonList = pokemonList ? searchFilter(pokemonList) : []
 
   return (
     <div className="lg:mt-8 mt-6">
@@ -34,14 +40,30 @@ export default async function PokemonListByType({ params }: Props) {
         <div className="flec flex-col w-full space-y-3">
           <h3 className="text-3xl font-semibold tracking-tight">
             Pokemons of Type&nbsp;
-            <span style={{ color: colorType[type as PokemonType] }}>
+            <span style={{ color: colorType[type as keyof typeof colorType] }}>
               {toCapitalize(type)}
             </span>
           </h3>
+
           <span className="text-sm text-gray-500 mb-4">
             Hover over the name to see the image
           </span>
-          <DataTable columns={columns} data={pokemonList} />
+          <div className="grid w-full max-w-sm items-center gap-1.5">
+            <Label htmlFor="pokemonName">Pokemon Name</Label>
+            <Input
+              type="text"
+              value={searchText}
+              autoComplete="off"
+              id="pokemonName"
+              placeholder="Search Pokemon"
+              onChange={(e) => setSearchText(e.target.value)}
+            />
+          </div>
+          {isLoading ? (
+            <SkeletonTable />
+          ) : (
+            <DataTable columns={columns} data={filteredPokemonList} />
+          )}
         </div>
       </div>
     </div>
