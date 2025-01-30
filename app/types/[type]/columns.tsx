@@ -17,7 +17,7 @@ export const columns: ColumnDef<Pokemon>[] = [
     accessorKey: 'name',
     header: 'Name',
     cell: (row) => {
-      const name = row.getValue('name')
+      const name = row.cell.getValue()
       return <PokemonModal name={name}></PokemonModal>
     },
   },
@@ -29,7 +29,7 @@ export const columns: ColumnDef<Pokemon>[] = [
     header: 'Actions',
     accessorKey: 'detailName',
     cell: (row) => {
-      const detailName = row.getValue('detailName')
+      const detailName = row.cell.getValue()
       return <PokemonDialog name={detailName}></PokemonDialog>
     },
   },
